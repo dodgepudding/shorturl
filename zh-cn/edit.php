@@ -13,21 +13,21 @@ if($url){
 	$oldurl = $murl->get($url);
 	if (empty($sourceurl)){
 		if (!$oldurl)
-			$msg = 'This shorturl does not exist!';
+			$msg = '此短地址不存在';
 		else
 			$sourceurl = $oldurl;
 	} else {
 		if ($oldurl) {
 			if ($oldurl!=$sourceurl)
 				$re = $murl->edit($sourceurl,$url);
-			$msg ='Change success';
+			$msg ='修改成功';
 		} else {
-			$msg = 'This shorturl does not exist, please generate one first!';
+			$msg = '亲，这个短地址不存在，请移步隔壁生成';
 		}
 	}
 }else{
 	if($_POST)
-		$msg = 'shorturl can not be null';
+		$msg = '亲，短地址不能为空';
 }
 
 ?>
@@ -36,9 +36,9 @@ if($url){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?php echo $option['domain'];?>Change shorturl</title>
-<meta name="keywords" content="Shorturl" />
-<meta name="description" content="<?php echo $option['domain'];?>Shorturl Generator" />
+<title><?php echo $option['domain'];?>短地址修改</title>
+<meta name="keywords" content="短地址" />
+<meta name="description" content="<?php echo $option['domain'];?>短地址生成工具" />
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
 </head>
@@ -47,24 +47,24 @@ if($url){
 <div class="row">
 <div class="span12">
 <form class="form-horizontal" method="post">
-<legend><?php echo $option['domain'];?>Shorturl Service</legend>
+<legend><?php echo $option['domain'];?>短地址服务</legend>
     <ul class="nav nav-tabs">
-    	<li><a href="add.php">Shorturl Generator</a></li>
-    	<li class="active"><a href="#">Change Shorturl</a></li>
+    	<li><a href="add.php">短地址生成</a></li>
+    	<li class="active"><a href="#">修改源地址</a></li>
     </ul>
 <div class="control-group info">
- <label class="control-label" for="shorturl">Shorturl: </label>
+ <label class="control-label" for="shorturl">短地址：</label>
  <div class="controls">
  	<div class="input-prepend">
 	<span class="add-on">http://<?php echo $option['domain'];?>/</span><input class="input-large" required="required" type="text" name="shorturl" id="shorturl" value="<?php echo $shorturl; ?>" />
 	</div>
-	<span class="help-inline">please input the exist shorturl</span>
+	<span class="help-inline">请输入要修改的短地址</span>
  </div>
 </div>
 <div class="control-group">
- <label class="control-label" for="url">new source：</label>
+ <label class="control-label" for="url">新的源地址：</label>
  <div class="controls">
-	<input class="input-xxlarge" type="url" name="url" id="url" placeholder="new source change here，let it null to fetch the original one" value="<?php echo $sourceurl; ?>" />
+	<input class="input-xxlarge" type="url" name="url" id="url" placeholder="输入源地址，留空可查询短地址是否存在" value="<?php echo $sourceurl; ?>" />
  </div>
 </div>
 
@@ -73,7 +73,7 @@ if($url){
   	<label class="tips">
  		<?php echo $msg; ?>
  	</label>
-	<button type="submit" class="btn">submit</button>
+	<button type="submit" class="btn">提交</button>
  </div>
 </div>
 </form>
