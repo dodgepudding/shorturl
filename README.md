@@ -84,4 +84,4 @@ return the long url if success
 
 Demo
 -------
-http://s.4wer.com
+http://s.4wer.com/add.php
