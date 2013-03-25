@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Shorturl by dodgepudding</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/dodgepudding/shorturl">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Shorturl</h1>
+            <h2>High perform shorturl using mongoDB</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/dodgepudding/shorturl/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/dodgepudding/shorturl/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>shorturl</h1>
+
+<p>shorturl using mongoDB, auto generate the short url QRcode, with simple API interface</p>
+
+<h2>Requirement</h2>
+
+<ul>
+<li>PHP 5.0+<br>
+</li>
+<li>php_mongo.so<br>
+</li>
+</ul><h2>Install</h2>
+
+<p>setup rewrite rule redirect to /index.php
+for nginx.conf (insert to location scope):</p>
+
+<pre><code>    if (!-e $request_filename) {
+       rewrite  ^(.*)$  /index.php?s=$1  last;
+    }
+</code></pre>
+
+<p>for apache .htaccess:</p>
+
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?s=$1 [QSA,PT,L]
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>change parameters in config.php</p>
+
+<pre><code>array(
+    'domain'=&gt;'example.com', // your domain name
+    'host'=&gt;'localhost', // your mongoDB host
+    'port'=&gt;27017,  //your mongoDB port
+    'db'=&gt;'shorturl', //your mongoDB databbase
+    'table'=&gt;'url', //table name to store urls
+    'sumtable'=&gt;'click', //tabale name to store summary
+    'username'=&gt;'', //if mongoDB username and password needed
+    'password'=&gt;'', //if mongoDB username and password needed
+    'keys'=&gt;'23456789abcdefghijkmnpqrstuvwxyz', //the alphabet for shorturl auto generate
+    'keylength'=&gt;6, //the short string length
+}
+</code></pre>
+
+<ul>
+<li>visit <a href="http://domain.com/add.php">http://domain.com/add.php</a> to open control panel</li>
+</ul><h2>Files</h2>
+
+<p>zh-cn/* ##Chinese versioin<br>
+include/shorturl.class.php ##MongoDB Model file<br>
+include/QRcode.class.php  ##QRcode library<br>
+index.php  ##shorturl revert<br>
+add.php ##add shorturl panel<br>
+edit.php ##change url panel<br>
+config.php ##configuration<br>
+qrcode.php ##output qrcode image<br>
+api.php ##API interface  </p>
+
+<h2>APIs</h2>
+
+<p>Apis below returns 0 for failed.  </p>
+
+<ul>
+<li><p>get the visits of shorturl<br><code>GET api.php?a=count&amp;url={shorturl}</code><br>
+return the number</p></li>
+<li><p>change the exist shorturl to another long url<br><code>GET api.php?a=edit&amp;source={new long url}&amp;url={shorturl}</code><br>
+return the shorturl if success</p></li>
+<li><p>set a new shorturl pointed to long url<br><code>GET api.php?a=edit&amp;source={long url}&amp;url={shorturl}</code><br>
+the url for shorturl param is not required, it will generate a random shorturl if null.it will return the shorturl if success.  </p></li>
+<li><p>delete a short url<br><code>GET api.php?a=del&amp;url={shorturl}</code><br>
+return 1 if success</p></li>
+<li><p>check for long url<br><code>GET api.php?url={shorturl}</code><br>
+return the long url if success  </p></li>
+</ul><h2>Demo</h2>
+
+<p><a href="http://s.4wer.com/add.php">http://s.4wer.com/add.php</a></p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/dodgepudding">dodgepudding</a> can be found on <a href="https://github.com/dodgepudding/shorturl">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
