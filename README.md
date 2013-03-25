@@ -11,12 +11,12 @@ Requirement
 Install
 --------
 setup rewrite rule redirect to /index.php
-for nginx.conf:
-'''
+for nginx.conf (insert to location scope):
+```
 	if (!-e $request_filename) {
 	   rewrite  ^(.*)$  /index.php?s=$1  last;
-	break;
-'''
+	}
+```
 for apache .htaccess:
 ```
 <IfModule mod_rewrite.c>
@@ -48,6 +48,7 @@ array(
 
 Files
 -------
+zh-cn/* ##Chinese versioin
 include/shorturl.class.php ##MongoDB Model file
 include/QRcode.class.php  ##QRcode library
 index.php  ##shorturl revert
@@ -81,3 +82,6 @@ return 1 if success
 `GET api.php?url={shorturl}` 
 return the long url if success  
 
+Demo
+-------
+http://s.4wer.com
