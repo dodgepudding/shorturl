@@ -49,7 +49,7 @@ if($sourceurl){
 <div class="row">
 <div class="span12">
 <form class="form-horizontal" method="post">
-<legend><?php echo $option['domain'];?>Shorturl Service</legend>
+<legend><?php echo $option['domain'];?> Shorturl Service</legend>
     <ul class="nav nav-tabs">
     	<li class="active"><a href="#">Shorturl Generator</a></li>
     	<li><a href="edit.php">Change Shorturl</a></li>

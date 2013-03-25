@@ -1,7 +1,7 @@
 <?php
 require 'include/shorturl.class.php';
 $option = include ('config.php');
-$url = trim($_GET['s']);
+$url = trim($_GET['s'],'/');
 if($url){
 	$murl = new ShortUrl($option);
 	if (!preg_match("/^http\:\/\/".$option['domain']."/si", $url)) {

@@ -36,7 +36,7 @@ if($url){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?php echo $option['domain'];?>Change shorturl</title>
+<title><?php echo $option['domain'];?> Change shorturl</title>
 <meta name="keywords" content="Shorturl" />
 <meta name="description" content="<?php echo $option['domain'];?>Shorturl Generator" />
 <link href="css/bootstrap.css" rel="stylesheet">
