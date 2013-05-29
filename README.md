@@ -71,7 +71,7 @@ return the number
 return the shorturl if success
 
 * set a new shorturl pointed to long url  
-`GET api.php?a=edit&source={long url}&url={shorturl}`  
+`GET api.php?a=set&source={long url}&url={shorturl}`  
 the url for shorturl param is not required, it will generate a random shorturl if null.it will return the shorturl if success.  
 
 * delete a short url  
